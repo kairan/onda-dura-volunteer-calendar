@@ -1,6 +1,5 @@
 import { Header } from "@/components/header";
 import { VolunteerCalendar } from "@/components/volunteer-calendar";
-import Image from "next/image";
 
 export default function Home() {
   return (

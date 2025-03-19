@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { CalendarIcon, ChevronLeft, ChevronRight } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   addDays,
   addMonths,
@@ -16,8 +14,10 @@ import {
   startOfMonth,
   subMonths,
 } from "date-fns";
-import { Button } from "./ui/button";
+import { CalendarIcon, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
 // Sample data for church services
 const services = [
   {
@@ -103,15 +103,10 @@ const initialAvailability = [
   },
 ];
 
-interface VolunteerCalendarProps {
-  currentUser: { id: number; name: string } | null;
-}
-
 const VolunteerCalendar = () => {
   const currentUser = { id: 1, name: "John Smith" };
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [availability, setAvailability] =
-    useState<typeof initialAvailability>(initialAvailability);
+  const availability = initialAvailability;
 
   const firstDayOfMonth = startOfMonth(currentDate);
   const lastDayOfMonth = endOfMonth(currentDate);
@@ -134,12 +129,6 @@ const VolunteerCalendar = () => {
   const nextMonthDays = Array.from({ length: remainingDays }, (_, i) => {
     return addDays(lastDayOfMonth, i + 1);
   });
-
-  console.log(dayOfWeekOfFirstDay + daysInMonth.length);
-
-  console.log(remainingDays);
-
-  console.log(nextMonthDays);
 
   // Combine all days to display
   const allDaysToDisplay = [
