@@ -3,7 +3,6 @@
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
-
 @layer base {
   :root {
     --background: 0 0% 100%;
